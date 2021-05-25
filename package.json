@@ -1,0 +1,18 @@
+{
+  "name": "military-campgrounds",
+  "version": "1.0.0",
+  "description": "Scrapes military campground data from www.militarycampgrounds.us and produces a CSV file from it which can then be imported into Google Maps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kmedley",
+  "license": "MIT",
+  "dependencies": {
+    "async-sema": "^3.1.0",
+    "cheerio": "^1.0.0-rc.9",
+    "json2csv": "^5.0.6",
+    "limiter": "^2.1.0",
+    "node-fetch": "^2.6.1"
+  }
+}
