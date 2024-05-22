@@ -41,12 +41,19 @@ class MilitaryCampgrounds {
    * @return  {[type]}       [return description]
    */
   static export(csv) {
-    fs.writeFile('./military-campgrounds.csv', csv, (err) => {
-      if (err) {
-        console.error(err);
+    const d = new Date();
+    fs.writeFile(
+      `./military-campgrounds-${d.getUTCFullYear()}-${
+        d.getUTCMonth() + 1
+      }-${d.getUTCDate()}.csv`,
+      csv,
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
+        // file written successfully
       }
-      // file written successfully
-    });
+    );
   }
 
   /**
@@ -94,7 +101,8 @@ class MilitaryCampgrounds {
    */
   static async execute() {
     const { payload } = await MilitaryCampgrounds.getList();
-    const addedDetailsPayload = await MilitaryCampgrounds.getDetailsForCampgrounds(payload);
+    const addedDetailsPayload =
+      await MilitaryCampgrounds.getDetailsForCampgrounds(payload);
     const finalPayload = MilitaryCampgrounds.transform(addedDetailsPayload);
     const csv = MilitaryCampgrounds.convertToCSV(finalPayload);
     MilitaryCampgrounds.export(csv);
